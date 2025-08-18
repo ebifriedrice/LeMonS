@@ -9,13 +9,13 @@ function HomePage(){
             <div className="pt-10 text-white flex flex-col md:flex-row items-center justify-center  mx-5 gap-10 lg:mx-16  h-[50rem] sm:h-[90vh]">
                 <div className=" mt-16 sm:mt-0  flex flex-col justify-center  md:w-1/2 space-y-6">
                         <h1 className=" text-4xl sm:text-5xl font-semibold">
-                            Find out best 
+                            Discover the Best
                             <span className=" text-yellow-500 font-bold">
-                                    Online Coures 
+                                    Online Courses
                             </span>
                         </h1>
                         <p className=" text-lg sm:text-xl text-gray-200">
-                            We have a large library of course taught by highly skilled and qualified faculties at a very affordable rate cost .
+                            Explore a vast library of courses taught by highly skilled and qualified instructors at an affordable price.
                         </p>
                         <div className=" space-x-6">
                             <Link to="/courses">

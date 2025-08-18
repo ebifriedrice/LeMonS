@@ -20,12 +20,12 @@ export const register=asyncHandler(async(req,res,next)=>{
     const {fullName, email, password}= req.body;
 
     if(!fullName|| !email|| !password){
-        return next(new AppError('All fileds are  required ', 400));
+        return next(new AppError('All fields are required.', 400));
     }
 
     const userExists = await User.findOne({email});
     if(userExists){
-        return next(new AppError('Email already exists  ', 409));
+        return next(new AppError('Email already exists.', 409));
     }
     const user = await User.create({
         fullName,
@@ -41,7 +41,7 @@ export const register=asyncHandler(async(req,res,next)=>{
 
     if(!user){
         return next(
-            new AppError('User registration failed please try again ', 400)
+            new AppError('User registration failed, please try again.', 400)
         );
     }
 
@@ -64,7 +64,7 @@ export const register=asyncHandler(async(req,res,next)=>{
             
         } catch (e) {
             return next(
-                new AppError( e ||'File not uploaded , please try again ', 500)
+                new AppError( e ||'File not uploaded, please try again.', 500)
             )
         }
     }
@@ -79,7 +79,7 @@ export const register=asyncHandler(async(req,res,next)=>{
 
     res.status(201).json({
         success:true,
-        message:'User registered sucessfully',
+        message:'User registered successfully.',
         user,
     });
 });
@@ -94,7 +94,7 @@ export const login=asyncHandler(async (req,res,next)=>{
         const {email, password}= req.body;
 
         if(!email||!password){
-            return next(new AppError('Email and Password are required ', 400));
+            return next(new AppError('Email and password are required.', 400));
         }
     
         const user= await User.findOne({
@@ -103,7 +103,7 @@ export const login=asyncHandler(async (req,res,next)=>{
     
         if(!(user &&(await user.comparePassword(password)))){
             return next(
-                new AppError('Email or password does not match ', 400)
+                new AppError('Email or password does not match.', 400)
             );
         }
     
@@ -115,7 +115,7 @@ export const login=asyncHandler(async (req,res,next)=>{
     
         res.status(200).json({
             success: true,
-            message:'User logged in Successfully',
+            message:'User logged in successfully.',
             user,
         })
         
@@ -138,7 +138,7 @@ export const logout=asyncHandler(async(req,res,next)=>{
 
     res.status(200).json({
         success: true,
-        message:'User logged out  Successfully',
+        message:'User logged out successfully.',
     })
 });
 /**
@@ -151,11 +151,11 @@ export const getProfile=asyncHandler(async (req,res, next)=>{
 
         res.status(200).json({
             success: true,
-            message:'User details ',
+            message:'User details.',
             user,
         })
     } catch (e) {
-        return next(new AppError('Failed to fetch profile ', 500));
+        return next(new AppError('Failed to fetch profile.', 500));
     }
 
 });
@@ -167,13 +167,13 @@ export const forgotPassword=asyncHandler(async(req, res,next)=>{
     const {email}= req.body;
 
     if(!email){
-        return next(new AppError('Email is required ', 400)
+        return next(new AppError('Email is required.', 400)
         );
     }
 
     const user = await User.findOne({email});
     if(!user){
-        return next(new AppError('Email  not registered ', 400)
+        return next(new AppError('Email not registered.', 400)
         );
     }
 
@@ -191,7 +191,7 @@ export const forgotPassword=asyncHandler(async(req, res,next)=>{
 
         res.status(200).json({
             success: true,
-            message:`Reset password token has been sent to ${email} Sucessfully`,
+            message:`Reset password token has been sent to ${email} successfully.`,
         })
     } catch(e ){
         user.forgotPasswordExpiry=undefined;
@@ -223,7 +223,7 @@ export const resetPassword =asyncHandler(async(req, res,next )=>{
         );
 
         if(!user){
-            return next(new AppError("Token is invailid or expired , please try again", 400))
+            return next(new AppError("Token is invalid or expired, please try again.", 400))
             
         }
 
@@ -235,7 +235,7 @@ export const resetPassword =asyncHandler(async(req, res,next )=>{
 
         res.status(200).json({
             success: true,
-            message:`Password Changed Sucessfully`,
+            message:`Password changed successfully.`,
         })
 });
 /**
@@ -246,18 +246,18 @@ export const changePassword =asyncHandler(async(req, res, next)=>{
     const {id}= req.user;
     
     if(!oldPassword||!newPassword){
-        return next(new AppError("All fields are manddatory", 400))
+        return next(new AppError("All fields are mandatory.", 400))
     }
 
     const user = await User.findById(id).select('+password');
     if(!user){
-        return next(new AppError("user does not exist", 400))
+        return next(new AppError("User does not exist.", 400))
     }
 
     const isPasswordValid = await user.comparePassword(oldPassword);
 
     if(!isPasswordValid){
-        return next(new AppError("Invalid old password", 400))
+        return next(new AppError("Invalid old password.", 400))
     }
 
     user.password = newPassword;
@@ -268,7 +268,7 @@ export const changePassword =asyncHandler(async(req, res, next)=>{
 
     res.status(200).json({
         success: true,
-        message:`Password  changed Sucessfully`,
+        message:`Password changed successfully.`,
     })
 })
 /**
@@ -283,7 +283,7 @@ export const updateUser=asyncHandler(async(req, res,next)=>{
     const user = await User.findById(id);
 
     if(!user){
-        return next(new AppError("user does not exist", 400))
+        return next(new AppError("User does not exist.", 400))
     }
 
     if(fullName){
@@ -311,7 +311,7 @@ export const updateUser=asyncHandler(async(req, res,next)=>{
             
         } catch (e) {
             return next(
-                new AppError( e ||'File not uploaded , please try again ', 500)
+                new AppError( e ||'File not uploaded, please try again.', 500)
             )
         }
     }
@@ -319,6 +319,6 @@ export const updateUser=asyncHandler(async(req, res,next)=>{
 
     res.status(200).json({
         success: true,
-        message:`User details updated  Sucessfully`,
+        message:`User details updated successfully.`,
     })
 })
