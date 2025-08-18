@@ -12,7 +12,7 @@ export const contactUs = asyncHandler(async (req, res, next) => {
     const { name, email, message } = req.body;
   
     if (!name || !email || !message) {
-      return next(new AppError('Name, Email, Message are required'));
+      return next(new AppError('Name, email, and message are required.'));
     }
   
     try {
@@ -27,7 +27,7 @@ export const contactUs = asyncHandler(async (req, res, next) => {
   
     res.status(200).json({
       success: true,
-      message: 'Your request has been submitted successfully',
+      message: 'Your request has been submitted successfully.',
     });
 });
 /**
@@ -43,7 +43,7 @@ export const userStats = asyncHandler(async (req, res, next) => {
   
     res.status(200).json({
       success: true,
-      message: 'All registered users count',
+      message: 'All registered users count.',
       allUsersCount,
       subscribedUsersCount,
     });

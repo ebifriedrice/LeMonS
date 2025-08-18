@@ -1,24 +1,19 @@
-# LMS(Learning Management System )
+# Learning Management System (LMS)
 
-This repository contains the source code and implementation of a Learning Management System (LMS) developed using the MERN stack (MongoDB, Express.js, React, Node.js) along with Tailwind CSS and DaisyUI for styling, Cloudinary for managing media, and Razorpay for subscription management.
-
-## VIDEO 
-
-https://youtu.be/T8YZitqdlEY
+This repository contains the source code for a Learning Management System (LMS) developed using the MERN stack (MongoDB, Express.js, React, Node.js), Tailwind CSS, and Cloudinary.
 
 ## Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
 - [Installation](#installation)
-- [Subscription Management](#subscription-management)
 - [Prerequisites](#prerequisites)
 - [Contributing](#contributing)
-- [Further-Support](#further-support)
+- [Support](#support)
 
 ## Overview
 
-The Learning Management System (LMS) is a web-based application that facilitates the management and delivery of educational content and training materials. It allows administrators to create courses, manage users, and track progress. Users can access courses, view content, and complete assessments. Additionally, it offers subscription management through Razorpay, allowing users to purchase and cancel subscriptions.
+The Learning Management System (LMS) is a web-based application that facilitates the management and delivery of educational content. It allows administrators to create courses, manage users, and track progress. Users can access courses, view content, and complete assessments.
 
 ## Features
 
@@ -27,71 +22,50 @@ The Learning Management System (LMS) is a web-based application that facilitates
 - Content upload and management via Cloudinary
 - User enrollment in courses and progress tracking
 - Interactive user interface using React and Tailwind CSS
-- Subscription management with Razorpay (for premium content)
-
-## Admin Login Credentials
-
-By default, the LMS comes with an admin account. Use the following credentials to log in:
-
-- **Email-1:** `pgupta49@gmail.com`
-- **Password-1:** `123456789@Lms`
-  
-## User Login Credentials
-
-By default, the LMS comes with an admin account. Use the following credentials to log in:
-
-- **Email-1:** `user1@gmail.com`
-- **Password-1:** `123456789@Lms`
 
 ## Installation
 
- Clone the project 
+To get started with the project, clone the repository:
 
 ```bash
-git@github.com:Princegupta101/Larning-Management-System.git
+git clone https://github.com/your-username/Larning-Management-System.git
 ```
 
-### Setup instruction  for Frontend
+### Frontend Setup
 
-1. Move into the directory
+1.  Navigate to the `Client` directory:
+    ```bash
+    cd Client
+    ```
+2.  Install the dependencies:
+    ```bash
+    npm install
+    ```
+3.  Start the development server:
+    ```bash
+    npm run dev
+    ```
 
-```bash
-cd Client
-```
-2. install  dependenices
+### Backend Setup
 
-```bash
-npm install
-```
-3.  run the server
-
-```bash
-npm run dev
-```
-
-### Setup instruction  for Backend
-
-1. Move into the directory
-
-```bash
-cd Server
-```
-2. install  dependenices
-
-```bash
-npm install
-```
-3.  run the server
-
-```bash
-npm run dev
-```
+1.  Navigate to the `Server` directory:
+    ```bash
+    cd Server
+    ```
+2.  Install the dependencies:
+    ```bash
+    npm install
+    ```
+3.  Start the development server:
+    ```bash
+    npm run dev
+    ```
 4.  Set up environment variables:
-   Create a `.env` file in the `server` directory and add the following:
+    Create a `.env` file in the `Server` directory and add the following variables:
 
-```bash
-    PORT = <Port number >
-    MONGODB_URL=<Connection_LINK>
+    ```bash
+    PORT = <Port number>
+    MONGODB_URL = <Connection_LINK>
     JWT_SECRET = <YOUR_LONG_JWT_SECRET>
     JWT_EXPIRY = <JWT_EXPIRY>
 
@@ -108,22 +82,7 @@ npm run dev
     SMTP_USERNAME = <YOUR_SMTP_USERNAME>
     SMTP_PASSWORD = <YOUR_SMTP_PASSWORD>
     SMTP_FROM_EMAIL = <YOUR_SMTP_FROM_EMAIL>
-
-    RAZORPAY_KEY_ID = <YOUR_RAZORPAY_KEY>
-    RAZORPAY_SECRET = <YOUR_RAZORPAY_SECRET>
-    RAZORPAY_PLAN_ID = <YOUR_RAZORPAY_PLAN_ID>
-```
-
-## Subscription Management
-
-- Users can purchase subscriptions for accessing premium content or features.
-- Implement a subscription management interface that allows users to:
-  - View available subscription plans
-  - Select and purchase a subscription plan via Razorpay
-  - Cancel an existing subscription
-
-## Low Level Diagram
-![diagram](low-level-diagram.png)
+    ```
 
 ## Prerequisites
 
@@ -133,12 +92,11 @@ Before running this project locally, ensure you have the following installed:
 - [npm](https://www.npmjs.com/) (v6.x or higher)
 - [MongoDB](https://www.mongodb.com/) (v4.x or higher)
 - [Cloudinary](https://cloudinary.com/) account and API credentials
-- [Razorpay](https://razorpay.com/) account and API credentials
 
 ## Contributing
 
-We welcome contributions to Learning Management System  Feel free to create pull requests with your enhancements or bug fixes. Please ensure your contributions adhere to the coding style and conventions used in the project.
+We welcome contributions to the Learning Management System. Feel free to create pull requests with your enhancements or bug fixes. Please ensure your contributions adhere to the coding style and conventions used in the project.
 
-## Further-Support
+## Support
 
-If you encounter any issues or have questions, feel free to raise them as GitHub issues, and we'll be happy to assist you.
+If you encounter any issues or have questions, please open an issue on GitHub, and we'll be happy to assist you.

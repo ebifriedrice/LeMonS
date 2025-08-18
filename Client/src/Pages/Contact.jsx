@@ -30,15 +30,15 @@ function Contact(){
                 return;
         }
         if(!isEmail(userInput.email)){
-            toast.error("Invalid Email ")
+            toast.error("Invalid email address.")
             return;
         }
         try {
             const response = axiosInstance.post("/contact",userInput)
             toast.promise(response,{
-                loading:"Submitting your message....",
-                success:"Form submitted sucessfully",
-                error:"Failed to submit the from"
+                loading:"Submitting your message...",
+                success:"Form submitted successfully.",
+                error:"Failed to submit the form."
             })
             const contactResponse = await response;
             if(contactResponse?.data?.success){
@@ -49,7 +49,7 @@ function Contact(){
                 })
             }
         } catch (error) {
-            toast.error("operation failed......")
+            toast.error("Operation failed. Please try again.")
         }
     }
 

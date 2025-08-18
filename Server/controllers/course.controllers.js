@@ -14,7 +14,7 @@ export const getAllCourse = asyncHandler(async (req, res, next)=>{
         const courses = await Course.find({}).select('-lectures');
         res.status(200).json({
             success:true,
-            message:'All course',
+            message:'All courses',
             courses,
         })
         
@@ -43,7 +43,7 @@ export const getLecturesByCourseId = asyncHandler(async (req, res, next)=>{
 
         res.status(200).json({
             success:true,
-            message:'Course lectures fecthed sucesssfully ',
+            message:'Course lectures fetched successfully.',
             lectures:course.lectures,
         })
         
@@ -62,7 +62,7 @@ export const createCourse = asyncHandler(async (req, res, next)=>{
     const {title, description , category, createdBy}= req.body;
     if(!title||! description ||! category||!createdBy){
         return next(
-            new AppError('Alll fields are required ', 400)
+            new AppError('All fields are required.', 400)
         )
     }
     
@@ -79,7 +79,7 @@ export const createCourse = asyncHandler(async (req, res, next)=>{
 
     if(!course){
         return next(
-            new AppError('Course could not created please try again  ', 500)
+            new AppError('Course could not be created, please try again.', 500)
         )
     }
     if(req.file){
@@ -101,7 +101,7 @@ export const createCourse = asyncHandler(async (req, res, next)=>{
         
         res.status(200).json({
             success:true,
-            message:'Course created sucesssfully ',
+            message:'Course created successfully.',
             course,
         })
    
@@ -127,7 +127,7 @@ export const updateCourse = asyncHandler(async (req, res, next)=>{
     )   
     if(!course){
         return next (
-            new AppError("Course with given id does not exist", 500)
+            new AppError("Course with the given ID does not exist.", 500)
         ) 
     }
     
@@ -138,7 +138,7 @@ export const updateCourse = asyncHandler(async (req, res, next)=>{
     }
     res.status(200).json({
         success:true,
-        message:'Course Updated sucesssfully ',
+        message:'Course updated successfully.',
     })
 });
 /**
@@ -151,7 +151,7 @@ export const removeCourse = asyncHandler(async (req, res, next)=>{
         const course = await  Course.findById(id);
         if(!course){
             return next (
-                new AppError("Course with given id does not exist", 500)
+                new AppError("Course with the given ID does not exist.", 500)
             ) 
         }
         
@@ -159,7 +159,7 @@ export const removeCourse = asyncHandler(async (req, res, next)=>{
 
         res.status(200).json({
             success:true,
-            message:'Course Removed sucesssfully ',
+            message:'Course removed successfully.',
         })
         
     } catch (error) {
@@ -178,7 +178,7 @@ export const addLectureToCourseById= asyncHandler(async(req, res, next )=>{
     const {id }= req.params;
     if(!title||! description){
         return next(
-            new AppError('Alll fields are required ', 400)
+            new AppError('All fields are required.', 400)
         )
     }
 
@@ -186,7 +186,7 @@ export const addLectureToCourseById= asyncHandler(async(req, res, next )=>{
 
     if(!course){
         return next(
-            new AppError('course are not exist', 500)
+            new AppError('Course does not exist.', 500)
         )
     }
 
@@ -220,7 +220,7 @@ export const addLectureToCourseById= asyncHandler(async(req, res, next )=>{
         
         res.status(200).json({
             success:true,
-            message:' lecture Added sucesssfully ',
+            message:'Lecture added successfully.',
             course,
         })
    
