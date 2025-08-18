@@ -1,17 +1,14 @@
 import {ArcElement, BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title,Tooltip} from 'chart.js'
 import { useEffect } from 'react';
-import { Bar, Pie } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import { BsCollectionPlayFill, BsTrash } from 'react-icons/bs';
 import {FaUsers} from "react-icons/fa";
-import { FcSalesPerformance } from "react-icons/fc";
-import { GiMoneyStack } from "react-icons/gi";
 import { TiEdit } from "react-icons/ti";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import HomeLayout from "../../Layouts/HomeLayout";
 import { deleteCourse, getAllCourse } from '../../Redux/Slices/CourseSlice';
-import { getPaymentRecord } from '../../Redux/Slices/RazorpaySlice';
 import { getStatsData } from '../../Redux/Slices/StatSlice';
 
 ChartJS.register( ArcElement, Tooltip,Legend, CategoryScale, LinearScale, BarElement, Title);
@@ -23,9 +20,6 @@ function AdminDeshboard(){
   
     const { allUsersCount, subscribedCount } = useSelector((state) => state.stat);
 
-    const {allPayments, monthlySalesRecord  }=useSelector((state)=>state.razorpay);
-  
-
     const userData={
         labels:["Registered User", "Enrolled User"],
         datasets:[
@@ -35,18 +29,6 @@ function AdminDeshboard(){
                 backgroundColor:["yellow","green"],
                 borderWidth:1,
                 borderColor:["yellow", "green"]
-            }
-        ]
-    }
-
-    const salesData={
-        labels:["Jan", "Feb","Mar","Apr","May","Jun","Jul","Aug","Sep", "Oct", "Nov", "Dec"],
-        fontColor:"white",
-        datasets:[
-            {
-               label:"Sales/Month",
-               data:monthlySalesRecord, 
-               backgroundColor:["red"],
             }
         ]
     }
@@ -67,7 +49,6 @@ function AdminDeshboard(){
             async ()=>{
                 await dispatch(getAllCourse());
                 await dispatch(getStatsData());
-                await dispatch(getPaymentRecord());
             }
         )()
 
@@ -104,28 +85,6 @@ function AdminDeshboard(){
                         </div>
                     </div>
 
-                    <div className="flex flex-col items-center gap-10 p-5 shadow-lg rounded-md">
-                        <div className="h-80 w-full relative">
-                            <Bar  className="absolute bottom-0 h-80 w-full" data={salesData} />
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-5">
-                            <div className="flex items-center justify-between p-5 gap-5 rounded-md shadow-md">
-                                <div className="flex flex-col items-center">
-                                    <p className="font-semibold">Subscription Count</p>
-                                    <h3 className="text-4xl font-bold">{allPayments?.count}</h3>
-                                </div>
-                                <FcSalesPerformance className="text-yellow-500 text-5xl"/>
-                            </div>
-                            <div className="flex items-center justify-between p-5 gap-5 rounded-md shadow-md">
-                                <div className="flex flex-col items-center">
-                                    <p className="font-semibold">Total Revenue</p>
-                                    <h3 className="text-4xl font-bold">{allPayments?.count * 499}</h3>
-                                </div>
-                                <GiMoneyStack className="text-green-500 text-5xl"/>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div className=" lg:mx-[10%] w-[80%] self-center flex flex-col items-center justify-center gap-10 mb-10">

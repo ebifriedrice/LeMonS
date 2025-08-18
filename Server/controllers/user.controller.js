@@ -38,6 +38,7 @@ export const register=asyncHandler(async(req,res,next)=>{
          
     });
 
+
     if(!user){
         return next(
             new AppError('User registration failed please try again ', 400)
