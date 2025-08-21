@@ -20,9 +20,9 @@ import NotFound from './Pages/NotFound.jsx'
 import ChangePassword from './Pages/Password/ChangePassword.jsx'
 import ForgetPassword from './Pages/Password/ForgetPassword.jsx'
 import ResetPassword from './Pages/Password/ResetPassword.jsx'
-import CheckoutPage from './Pages/Payment/Checkout.jsx'
-import CheckoutFailure from './Pages/Payment/CheckoutFailure.jsx'
-import CheckoutSuccess from './Pages/Payment/CheckoutSuccess.jsx'
+// import CheckoutPage from './Pages/Payment/Checkout.jsx'
+// import CheckoutFailure from './Pages/Payment/CheckoutFailure.jsx'
+// import CheckoutSuccess from './Pages/Payment/CheckoutSuccess.jsx'
 import Signup from './Pages/Signup.jsx'
 import EditProfile from './Pages/User/EditProfile.jsx'
 import Profile from './Pages/User/Profile.jsx'
@@ -54,9 +54,9 @@ function App() {
             <Route path='/user/profile' element={<Profile/>}></Route> 
             <Route path='/user/editprofile' element={<EditProfile/>}></Route> 
             <Route path='/change-password' element={<ChangePassword/>}></Route>
-            <Route path='/checkout' element={<CheckoutPage/>}></Route>
+            {/* <Route path='/checkout' element={<CheckoutPage/>}></Route>
             <Route path='/checkout/success' element={<CheckoutSuccess/>}></Route>
-            <Route path='/checkout/fail' element={<CheckoutFailure/>}></Route>      
+            <Route path='/checkout/fail' element={<CheckoutFailure/>}></Route>       */}
             <Route path='/course/displaylecture' element={<Displaylectures/>}></Route>
             <Route path='/course/edit' element={<EditCourse/>}></Route>
           </Route>
